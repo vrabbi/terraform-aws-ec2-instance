@@ -55,7 +55,7 @@ resource "aws_instance" "this" {
 
   provisioner "remote-exec" {
     when    = destroy
-    command = var.destroy_provisioner_command
+    command = "/home/ubuntu/tap-setup-scripts/src/pre-deletion.sh"
   }
 
   provisioner "remote-exec" {
