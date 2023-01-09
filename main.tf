@@ -45,7 +45,23 @@ resource "aws_instance" "this" {
   ipv6_addresses              = var.ipv6_addresses
 
   ebs_optimized = var.ebs_optimized
+  
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    password    = var.connection_password
+    host        = self.public_ip
+  }
 
+  provisioner "remote-exec" {
+    when    = destroy
+    command = var.destroy_provisioner_command
+  }
+
+  provisioner "remote-exec" {
+    command = var.create_provisioner_command
+  }
+  
   dynamic "capacity_reservation_specification" {
     for_each = length(var.capacity_reservation_specification) > 0 ? [var.capacity_reservation_specification] : []
     content {
