@@ -59,7 +59,7 @@ resource "aws_instance" "this" {
   }
 
   provisioner "remote-exec" {
-    command = [var.create_provisioner_command]
+    inline = [var.create_provisioner_command]
   }
   
   dynamic "capacity_reservation_specification" {
