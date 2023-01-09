@@ -55,11 +55,11 @@ resource "aws_instance" "this" {
 
   provisioner "remote-exec" {
     when    = destroy
-    command = "/home/ubuntu/tap-setup-scripts/src/pre-deletion.sh"
+    inline = ["/home/ubuntu/tap-setup-scripts/src/pre-deletion.sh"]
   }
 
   provisioner "remote-exec" {
-    command = var.create_provisioner_command
+    command = [var.create_provisioner_command]
   }
   
   dynamic "capacity_reservation_specification" {
