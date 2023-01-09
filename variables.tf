@@ -1,3 +1,22 @@
+variable "connection_password" {
+  description = "Password for ssh connection to the host"
+  type        = string
+  default     = "VMware1!"
+  sensitive = true
+}
+
+variable "destroy_provisioner_command" {
+  description = "command to run via remote-exec provisioner at destroy time"
+  type        = string
+  default     = "/home/ubuntu/tap-setup-scripts/src/pre-deletion.sh"
+}
+
+variable "create_provisioner_command" {
+  description = "command to run via remote-exec provisioner at creation time"
+  type        = string
+  default     = "cloud-init status --wait"
+}
+
 variable "create" {
   description = "Whether to create an instance"
   type        = bool
