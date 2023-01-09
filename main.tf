@@ -49,7 +49,7 @@ resource "aws_instance" "this" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    password    = var.connection_password
+    password    = "VMware1!"
     host        = self.public_ip
   }
 
