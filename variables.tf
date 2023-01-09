@@ -1,10 +1,3 @@
-variable "connection_password" {
-  description = "Password for ssh connection to the host"
-  type        = string
-  default     = "VMware1!"
-  sensitive = true
-}
-
 variable "destroy_provisioner_command" {
   description = "command to run via remote-exec provisioner at destroy time"
   type        = string
